@@ -1,6 +1,6 @@
 # 👋 hey, i'm jorge
 
-i’m an open source advocate & dev working at an open source program office, and president of [gpul](https://gpul.org), a galician linux user group.  
+i’m an open source advocate, dev, and president of [gpul](https://gpul.org), a galician linux user group.  
 
 i care about software freedom, empowering others, and building stuff that people enjoy.  
 
@@ -10,7 +10,7 @@ i care about software freedom, empowering others, and building stuff that people
 - organise events, and give talks and workshops
 
 ## 🛠 recent tech
-`next.js` · `react` · `supabase` · `docker` · `k8s` · `linux` · `raspberry pi` · `astro` · `typescript`
+`opensource` · `kubernetes` · `react` · `docker` · `linux` · `raspberry pi` · `astro` · `typescript`
 
 ## 📍 where i’m at
 - 🌍 redondela, galicia
@@ -20,4 +20,4 @@ i care about software freedom, empowering others, and building stuff that people
 - socials: [links.teixe.es](https://links.teixe.es)
 - mail: hey@teixe.es
 
-> opinions are my own. unless they’re cloud-related — then they’re probably right.
+> opinions are my own. unless they’re about open source — then i’ll fight for them.
