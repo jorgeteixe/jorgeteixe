@@ -1,13 +1,8 @@
 # 👋 hey, i'm jorge
 
-i’m an open source advocate, dev, and president of [gpul](https://gpul.org), a galician linux user group.  
+i’m an open source advocate, dev, and president of [gpul](https://gpul.org), a galician linux user group.
 
-i care about software freedom, empowering others, and building stuff that people enjoy.  
-
-## 🔧 what i do
-- help people publish open source the right way
-- build dev tools, backend services, and infra
-- organise events, and give talks and workshops
+i care about software freedom, community, and building things people enjoy.
 
 ## 🛠 recent tech
 `opensource` · `kubernetes` · `react` · `docker` · `linux` · `raspberry pi` · `astro` · `typescript`
