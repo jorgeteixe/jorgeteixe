@@ -15,7 +15,7 @@ i care about software freedom, empowering others, and building stuff that people
 ## 📍 where i’m at
 - 🌍 redondela, galicia
 - ✈️ sometimes abroad, sometimes at conferences
-- 📦 [@gpul](https://github.com/gpul), [@inditex](https://github.com/inditex)
+- 📦 [@gpul](https://github.com/gpul)
 
 ## ☕ let's talk
 - socials: [links.teixe.es](https://links.teixe.es)
