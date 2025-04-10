@@ -15,4 +15,4 @@ i care about software freedom, community, and building things people enjoy.
 - socials: [links.teixe.es](https://links.teixe.es)
 - mail: hey@teixe.es
 
-> opinions are my own. unless they’re about open source — then i’ll fight for them.
+> my opinions are open source — provided as is, with no warranty.
