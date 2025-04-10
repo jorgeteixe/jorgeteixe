@@ -9,7 +9,7 @@ i care about software freedom, community, and building things people enjoy.
 
 ## 📍 where i’m at
 - 🌍 redondela, galicia
-- ✈️ sometimes abroad, sometimes at conferences
+- ✈️ often traveling — for fun, for conferences, or both.
 
 ## ☕ let's talk
 - socials: [links.teixe.es](https://links.teixe.es)
