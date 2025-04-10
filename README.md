@@ -1,16 +1,24 @@
-## Hi there 👋
+# 👋 hey, i'm jorge
 
-<!--
-**jorgeteixe/jorgeteixe** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+i’m an open source advocate & dev working at an open source program office, and president of [gpul](https://gpul.org), a galician linux user group.  
 
-Here are some ideas to get you started:
+i care about software freedom, empowering others, and building stuff that people enjoy.  
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## 🔧 what i do
+- help people publish open source the right way
+- build dev tools, backend services, and infra
+- organise events, and give talks and workshops
+
+## 🛠 recent tech
+`next.js` · `react` · `supabase` · `docker` · `k8s` · `linux` · `raspberry pi` · `astro` · `typescript`
+
+## 📍 where i’m at
+- 🌍 redondela, galicia
+- ✈️ sometimes abroad, sometimes at conferences
+- 📦 [@gpul](https://github.com/gpul), [@inditex](https://github.com/inditex)
+
+## ☕ let's talk
+- socials: [links.teixe.es](https://links.teixe.es)
+- mail: hey@teixe.es
+
+> opinions are my own. unless they’re cloud-related — then they’re probably right.
