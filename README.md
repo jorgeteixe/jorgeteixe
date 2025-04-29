@@ -14,4 +14,4 @@ i care about software freedom, community, and building things people enjoy.
 ## ☕ let's talk
 - socials: [links.teixe.es](https://links.teixe.es)
 
-> my opinions are open source — provided as is, with no warranty.
+> my opinions are provided as is, with no warranty.
