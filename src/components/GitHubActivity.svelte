@@ -123,14 +123,15 @@
         loading ? "bg-yellow-400" : "bg-green-500"
       }`}
     ></div>
-    <h2 class="text-base font-semibold text-gray-900">Live from GitHub</h2>
+    <span class="text-sm font-medium text-gray-600">Live from </span>
     <a
       href="https://github.com/jorgeteixe"
       target="_blank"
       rel="noopener noreferrer"
-      class="p-1.5 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors ml-2"
+      class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded px-1 py-0.5 -mx-1 -my-0.5 transition-all duration-200"
       aria-label="GitHub Profile"
     >
+      <span>GitHub</span>
       <Github size={16} />
     </a>
   </div>
