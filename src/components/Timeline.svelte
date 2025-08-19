@@ -70,7 +70,7 @@
                   ? item.image
                   : item.image.src}
                 alt={item.title}
-                class="w-full h-48 object-cover rounded border border-gray-200"
+                class="w-full h-auto rounded border border-gray-200"
               />
               {#if item.imageCaption}
                 <p class="text-xs text-gray-500 mt-2 italic text-center">

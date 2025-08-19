@@ -177,12 +177,14 @@
               href={lastCommit.html_url}
               target="_blank"
               rel="noopener noreferrer"
-              class="hover:bg-gray-100 rounded p-2 -m-2 transition-colors flex-1 flex flex-col justify-center"
+              class="hover:bg-gray-100 rounded px-2 py-1 -mx-2 -my-1 transition-colors flex-1 flex flex-col justify-center"
             >
-              <p class="text-sm text-gray-900 font-medium mb-1 truncate">
+              <p class="text-sm text-gray-900 font-medium mb-1 truncate overflow-hidden text-ellipsis whitespace-nowrap">
                 {lastCommit.commit.message}
               </p>
               <div class="flex items-center gap-2 text-xs text-gray-500">
+                <span class="font-mono text-gray-600">{lastCommit.sha.substring(0, 7)}</span>
+                <span>•</span>
                 <span>{lastCommit.repository?.name}</span>
                 <span>•</span>
                 <span>{formatTimeAgo(lastCommit.commit.author.date)}</span>
