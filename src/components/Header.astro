@@ -1,0 +1,56 @@
+---
+import { ExternalLink } from 'lucide-astro';
+
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/articles', label: 'Articles' },
+  { href: '/about', label: 'About' },
+];
+
+function isActive(href: string, currentPath: string): boolean {
+  if (href === '/') {
+    return currentPath === '/';
+  }
+  return currentPath.startsWith(href);
+}
+---
+
+<header class="sticky top-0 z-50 backdrop-blur-sm bg-white/80 border-b border-gray-200/20">
+  <nav class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center">
+        <a href="/" class="text-lg font-medium text-gray-900 hover:text-gray-600 transition-colors">
+          Jorge Teixeira
+        </a>
+      </div>
+      
+      <div class="flex items-center space-x-8">
+        <div class="hidden sm:flex space-x-6">
+          {navItems.map(({ href, label }) => (
+            <a 
+              href={href} 
+              class={`text-sm transition-colors ${
+                isActive(href, currentPath)
+                  ? 'text-gray-900 font-medium border-b border-gray-900 pb-0.5'
+                  : 'text-gray-700 hover:text-gray-900'
+              }`}
+            >
+              {label}
+            </a>
+          ))}
+          <a 
+            href="https://cv.teixe.es" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="inline-flex items-center text-sm text-gray-700 hover:text-gray-900 transition-colors"
+          >
+            CV
+            <ExternalLink size={12} class="ml-1" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

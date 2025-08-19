@@ -1,0 +1,58 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import ArticleCard from './ArticleCard.astro';
+
+interface Props {
+  currentArticle: CollectionEntry<'articles'>;
+}
+
+const { currentArticle } = Astro.props;
+
+// Get all articles except the current one
+const allArticles = await getCollection('articles', ({ data }) => {
+  return data.draft !== true;
+});
+
+const otherArticles = allArticles.filter(article => article.slug !== currentArticle.slug);
+
+let recommendedArticles: CollectionEntry<'articles'>[] = [];
+
+// If the article has specific recommendations in frontmatter
+if (currentArticle.data.recommendations && currentArticle.data.recommendations.length > 0) {
+  // Get the specific recommended articles
+  const specificRecommendations = otherArticles.filter(article => 
+    currentArticle.data.recommendations?.includes(article.slug)
+  );
+  recommendedArticles = specificRecommendations.slice(0, 2);
+  
+  // If we need more recommendations, fill with random ones
+  if (recommendedArticles.length < 2) {
+    const remainingArticles = otherArticles.filter(article => 
+      !currentArticle.data.recommendations?.includes(article.slug)
+    );
+    const additionalNeeded = 2 - recommendedArticles.length;
+    const shuffled = remainingArticles.sort(() => Math.random() - 0.5);
+    recommendedArticles = [...recommendedArticles, ...shuffled.slice(0, additionalNeeded)];
+  }
+} else {
+  // No specific recommendations, get 2 random articles
+  const shuffled = otherArticles.sort(() => Math.random() - 0.5);
+  recommendedArticles = shuffled.slice(0, 2);
+}
+
+// Only show recommendations if we have articles to recommend
+const showRecommendations = recommendedArticles.length > 0;
+---
+
+{showRecommendations && (
+  <section>
+    <h2 class="text-2xl font-bold text-gray-900 mb-8">
+      More Articles
+    </h2>
+    <div class="grid gap-6 md:gap-8">
+      {recommendedArticles.map((article) => (
+        <ArticleCard article={article} showBorder={false} />
+      ))}
+    </div>
+  </section>
+)}

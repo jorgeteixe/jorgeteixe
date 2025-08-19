@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import ArticleCard from './ArticleCard.astro';
+import NoArticles from './NoArticles.astro';
+
+interface Props {
+  count?: number;
+  showHeader?: boolean;
+}
+
+const { count = 3, showHeader = true } = Astro.props;
+
+const articles = await getCollection('articles', ({ data }) => {
+  return data.draft !== true;
+});
+
+// Sort articles by publish date (newest first) and get only the requested count
+const latestArticles = articles
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, count);
+---
+
+<section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+  {showHeader && (
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900">
+        Latest Articles
+      </h2>
+      <a 
+        href="/articles" 
+        class="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+      >
+        View all →
+      </a>
+    </div>
+  )}
+  
+  {latestArticles.length > 0 ? (
+    <div class="grid gap-6 md:gap-8">
+      {latestArticles.map((article, index) => (
+        <ArticleCard article={article} showBorder={index < latestArticles.length - 1} />
+      ))}
+    </div>
+  ) : (
+    <NoArticles />
+  )}
+</section>
