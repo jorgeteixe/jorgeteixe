@@ -13,6 +13,8 @@ import svelte from "@astrojs/svelte";
 export default defineConfig({
   site: "https://teixe.es",
 
+  prefetch: true,
+
   vite: {
     plugins: [tailwindcss()],
   },
