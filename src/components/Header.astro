@@ -1,5 +1,5 @@
 ---
-import { ExternalLink } from 'lucide-astro';
+import { ExternalLink, Menu, X } from 'lucide-astro';
 
 const currentPath = Astro.url.pathname;
 
@@ -26,7 +26,8 @@ function isActive(href: string, currentPath: string): boolean {
         </a>
       </div>
       
-      <div class="flex items-center space-x-8">
+      <div class="flex items-center">
+        <!-- Desktop Navigation -->
         <div class="hidden sm:flex space-x-6">
           {navItems.map(({ href, label }) => (
             <a 
@@ -50,7 +51,88 @@ function isActive(href: string, currentPath: string): boolean {
             <ExternalLink size={12} class="ml-1" />
           </a>
         </div>
+
+        <!-- Mobile Menu Button -->
+        <button 
+          id="mobile-menu-button"
+          class="sm:hidden p-2 text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-md"
+          aria-label="Toggle menu"
+        >
+          <Menu id="menu-icon" size={20} />
+          <X id="close-icon" size={20} class="hidden" />
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-menu" class="sm:hidden hidden border-t border-gray-200/20 bg-white/95 backdrop-blur-sm">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        {navItems.map(({ href, label }) => (
+          <a 
+            href={href} 
+            class={`block px-3 py-2 text-sm transition-colors rounded-md ${
+              isActive(href, currentPath)
+                ? 'text-gray-900 font-medium bg-gray-100'
+                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
+            }`}
+          >
+            {label}
+          </a>
+        ))}
+        <a 
+          href="https://cv.teixe.es" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-colors rounded-md"
+        >
+          CV
+          <ExternalLink size={12} class="ml-1" />
+        </a>
       </div>
     </div>
   </nav>
 </header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    if (menuButton && mobileMenu && menuIcon && closeIcon) {
+      menuButton.addEventListener('click', () => {
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        
+        if (isOpen) {
+          mobileMenu.classList.add('hidden');
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        } else {
+          mobileMenu.classList.remove('hidden');
+          menuIcon.classList.add('hidden');
+          closeIcon.classList.remove('hidden');
+        }
+      });
+
+      // Close menu when clicking on a link
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        if (!menuButton.contains(event.target as Node) && !mobileMenu.contains(event.target as Node)) {
+          mobileMenu.classList.add('hidden');
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        }
+      });
+    }
+  });
+</script>

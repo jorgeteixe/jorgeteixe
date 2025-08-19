@@ -35,3 +35,8 @@ button:focus-visible {
 ::selection {
   @apply bg-blue-100 text-blue-900;
 }
+
+/* Background color - very light ochre */
+body {
+  background-color: #fefcf6;
+}

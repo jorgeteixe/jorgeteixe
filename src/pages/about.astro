@@ -1,6 +1,7 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
-import { User, MapPin, Mail, Coffee, Code, Wrench } from "lucide-astro";
+import Timeline from "../components/Timeline.svelte";
+import { timelineData } from "../data/timeline.ts";
 ---
 
 <PageLayout
@@ -8,17 +9,18 @@ import { User, MapPin, Mail, Coffee, Code, Wrench } from "lucide-astro";
   description="Learn more about Jorge Teixeira."
 >
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20">
-    <header class="mb-16">
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-        About Me
-      </h1>
-    </header>
+    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">About Me</h1>
 
-    <div class="text-center">
-      <div class="inline-flex items-center gap-2 text-sm text-gray-500">
-        <div class="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></div>
-        <span>Content coming soon...</span>
-      </div>
+    <div class="mb-8">
+      <p class="text-lg text-gray-700 leading-relaxed mb-4">
+        From organizing community events to building scalable applications, my
+        path has been shaped by curiosity and a passion for problem-solving.
+      </p>
+      <p class="text-lg text-gray-600">
+        Here's a glimpse into some experiences that have defined my journey.
+      </p>
     </div>
+
+    <Timeline timelineData={timelineData} client:load />
   </div>
 </PageLayout>
