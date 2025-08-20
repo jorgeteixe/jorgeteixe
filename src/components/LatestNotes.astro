@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
-import ArticleCard from './ArticleCard.astro';
-import NoArticles from './NoArticles.astro';
+import NoteCard from './NoteCard.astro';
+import NoNotes from './NoNotes.astro';
 
 interface Props {
   count?: number;
@@ -10,12 +10,12 @@ interface Props {
 
 const { count = 3, showHeader = true } = Astro.props;
 
-const articles = await getCollection('articles', ({ data }) => {
+const notes = await getCollection('notes', ({ data }) => {
   return data.draft !== true;
 });
 
-// Sort articles by publish date (newest first) and get only the requested count
-const latestArticles = articles
+// Sort notes by publish date (newest first) and get only the requested count
+const latestNotes = notes
   .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
   .slice(0, count);
 ---
@@ -24,10 +24,10 @@ const latestArticles = articles
   {showHeader && (
     <div class="flex items-center justify-between mb-8">
       <h2 class="text-2xl md:text-3xl font-bold text-gray-900">
-        Latest Articles
+        Latest Notes
       </h2>
       <a 
-        href="/articles" 
+        href="/notes" 
         data-astro-prefetch="hover"
         class="text-sm text-gray-600 hover:text-gray-900 transition-colors"
       >
@@ -36,13 +36,13 @@ const latestArticles = articles
     </div>
   )}
   
-  {latestArticles.length > 0 ? (
+  {latestNotes.length > 0 ? (
     <div class="grid gap-6 md:gap-8">
-      {latestArticles.map((article, index) => (
-        <ArticleCard article={article} showBorder={index < latestArticles.length - 1} />
+      {latestNotes.map((note, index) => (
+        <NoteCard note={note} showBorder={index < latestNotes.length - 1} />
       ))}
     </div>
   ) : (
-    <NoArticles />
+    <NoNotes />
   )}
 </section>

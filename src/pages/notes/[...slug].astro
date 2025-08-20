@@ -2,53 +2,53 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { ChevronLeft } from 'lucide-astro';
 import PageLayout from "../../layouts/PageLayout.astro";
-import ArticleSignature from "../../components/ArticleSignature.astro";
-import ArticleRecommendations from "../../components/ArticleRecommendations.astro";
+import NoteSignature from "../../components/NoteSignature.astro";
+import NoteRecommendations from "../../components/NoteRecommendations.astro";
 
 export async function getStaticPaths() {
-  const articles = await getCollection('articles');
-  return articles.map((article) => ({
-    params: { slug: article.slug },
-    props: article,
+  const notes = await getCollection('notes');
+  return notes.map((note) => ({
+    params: { slug: note.slug },
+    props: note,
   }));
 }
 
-type Props = CollectionEntry<'articles'>;
+type Props = CollectionEntry<'notes'>;
 
-const article = Astro.props;
-const { Content } = await article.render();
+const note = Astro.props;
+const { Content } = await note.render();
 ---
 
 <PageLayout 
-  title={`${article.data.title} - Jorge Teixeira`}
-  description={article.data.description}
+  title={`${note.data.title} - Jorge Teixeira`}
+  description={note.data.description}
 >
   <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20">
       <header class="mb-12">
         <div class="mb-4">
           <a 
-            href="/articles" 
+            href="/notes" 
             class="inline-flex items-center text-sm text-gray-500 hover:text-gray-700 transition-colors"
           >
             <ChevronLeft size={16} class="mr-1" />
-            Back to articles
+            Back to notes
           </a>
         </div>
         
         <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-          {article.data.title}
+          {note.data.title}
         </h1>
         
         <div class="flex flex-wrap items-center gap-4 text-gray-600 mb-6">
-          <time datetime={article.data.publishDate.toISOString()}>
-            {article.data.publishDate.toLocaleDateString('en-US', {
+          <time datetime={note.data.publishDate.toISOString()}>
+            {note.data.publishDate.toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long',
               day: 'numeric'
             })}
           </time>
           <div class="flex flex-wrap gap-2">
-            {article.data.tags.map((tag) => (
+            {note.data.tags.map((tag) => (
               <span class="px-2 py-1 text-xs bg-gray-100 text-gray-700 rounded">
                 {tag}
               </span>
@@ -71,7 +71,7 @@ const { Content } = await article.render();
         <Content />
       </div>
       
-      <ArticleSignature />
-      <ArticleRecommendations currentArticle={article} />
+      <NoteSignature />
+      <NoteRecommendations currentNote={note} />
     </article>
 </PageLayout>
