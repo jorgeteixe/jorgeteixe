@@ -32,7 +32,23 @@
 <div class="space-y-8">
   {#each timelineItems as item, index}
     <article class="border-b border-gray-200 pb-8 last:border-b-0 last:pb-0">
-      <div class="flex items-start gap-6">
+      <!-- Mobile Layout -->
+      <div class="block md:hidden">
+        <div class="mb-2">
+          <div class="text-sm text-gray-500 font-mono mb-1">
+            {item.year}
+          </div>
+          {#if item.location}
+            <div class="text-sm text-gray-500 italic mb-2">
+              {item.location}
+            </div>
+          {/if}
+          <h3 class="text-xl font-semibold text-gray-900">{item.title}</h3>
+        </div>
+      </div>
+
+      <!-- Desktop Layout -->
+      <div class="hidden md:flex items-start gap-6">
         <div class="text-sm text-gray-500 font-mono w-16 flex-shrink-0 mt-1">
           {item.year}
         </div>
@@ -96,6 +112,58 @@
             </div>
           {/if}
         </div>
+      </div>
+
+      <!-- Mobile Content -->
+      <div class="block md:hidden">
+        <p class="text-gray-600 leading-relaxed mb-3">
+          {item.description}
+        </p>
+
+        {#if item.tags && item.tags.length > 0}
+          <div class="flex flex-wrap gap-1 mb-3">
+            {#each item.tags as tag}
+              <span
+                class="px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded"
+              >
+                {tag}
+              </span>
+            {/each}
+          </div>
+        {/if}
+
+        {#if item.image}
+          <div class="mb-3 max-w-lg">
+            <img
+              src={typeof item.image === "string"
+                ? item.image
+                : item.image.src}
+              alt={item.title}
+              class="w-full h-auto rounded border border-gray-200"
+            />
+            {#if item.imageCaption}
+              <p class="text-xs text-gray-500 mt-2 italic text-center">
+                {item.imageCaption}
+              </p>
+            {/if}
+          </div>
+        {/if}
+
+        {#if item.links && item.links.length > 0}
+          <div class="flex flex-wrap gap-4">
+            {#each item.links as link}
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1 text-sm text-gray-600 hover:text-gray-900 hover:underline"
+              >
+                {link.text}
+                <ExternalLink size={12} />
+              </a>
+            {/each}
+          </div>
+        {/if}
       </div>
     </article>
   {/each}
