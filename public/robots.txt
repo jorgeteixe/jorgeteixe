@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://teixe.es/sitemap-index.xml
