@@ -1,0 +1,40 @@
+name: Check README
+
+on:
+  pull_request:
+    paths:
+      - 'src/pages/index.mdx'
+      - 'src/content/notes/**'
+      - 'README.md'
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/pages/index.mdx'
+      - 'src/content/notes/**'
+      - 'README.md'
+
+jobs:
+  check-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Generate README
+        run: pnpm update-readme
+
+      - name: Check if README is up to date
+        run: |
+          if ! git diff --exit-code README.md; then
+            echo "❌ README.md is not up to date!"
+            echo "Please run 'pnpm update-readme' and commit the changes."
+            exit 1
+          else
+            echo "✅ README.md is up to date!"
+          fi
