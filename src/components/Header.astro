@@ -1,140 +1,49 @@
 ---
-import { ExternalLink, Menu, X } from 'lucide-astro';
-
-const currentPath = Astro.url.pathname;
-
-const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/notes', label: 'Notes' },
-  { href: '/about', label: 'About' },
-];
-
-function isActive(href: string, currentPath: string): boolean {
-  if (href === '/') {
-    return currentPath === '/';
-  }
-  return currentPath.startsWith(href);
-}
+import { FileText, Github, Linkedin, Twitter } from 'lucide-astro'
 ---
 
-<header class="sticky top-0 z-50 backdrop-blur-sm bg-white/80 border-b border-gray-200/20">
-  <nav class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-16">
-      <div class="flex items-center">
-        <a href="/" class="text-lg font-medium text-gray-900 hover:text-gray-600 transition-colors">
-          Jorge Teixeira
-        </a>
-      </div>
-      
-      <div class="flex items-center">
-        <!-- Desktop Navigation -->
-        <div class="hidden sm:flex space-x-6">
-          {navItems.map(({ href, label }) => (
-            <a 
-              href={href}
-              data-astro-prefetch="hover"
-              class={`text-sm transition-colors ${
-                isActive(href, currentPath)
-                  ? 'text-gray-900 font-medium border-b border-gray-900 pb-0.5'
-                  : 'text-gray-700 hover:text-gray-900'
-              }`}
-            >
-              {label}
-            </a>
-          ))}
-          <a 
-            href="https://cv.teixe.es" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="inline-flex items-center text-sm text-gray-700 hover:text-gray-900 transition-colors"
-          >
-            CV
-            <ExternalLink size={12} class="ml-1" />
-          </a>
-        </div>
-
-        <!-- Mobile Menu Button -->
-        <button 
-          id="mobile-menu-button"
-          class="sm:hidden p-2 text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-md"
-          aria-label="Toggle menu"
-        >
-          <Menu id="menu-icon" size={20} />
-          <X id="close-icon" size={20} class="hidden" />
-        </button>
+<div class="flex justify-between items-center px-4 sm:px-6">
+  <div class="flex space-x-2 sm:space-x-3 items-center">
+    <div class="relative">
+      <img
+        src="https://github.com/jorgeteixe.png"
+        alt="Jorge Teixeira Profile Picture"
+        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full border-2 border-gray-200 dark:border-gray-700"
+      />
+      <div
+        class="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 sm:h-3 sm:w-3 bg-green-500 border-2 border-white dark:border-gray-900 rounded-full"
+      >
       </div>
     </div>
-
-    <!-- Mobile Navigation Menu -->
-    <div id="mobile-menu" class="sm:hidden hidden border-t border-gray-200/20 bg-white/95 backdrop-blur-sm">
-      <div class="px-2 pt-2 pb-3 space-y-1">
-        {navItems.map(({ href, label }) => (
-          <a 
-            href={href}
-            data-astro-prefetch="tap"
-            class={`block px-3 py-2 text-sm transition-colors rounded-md ${
-              isActive(href, currentPath)
-                ? 'text-gray-900 font-medium bg-gray-100'
-                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
-            }`}
-          >
-            {label}
-          </a>
-        ))}
-        <a 
-          href="https://cv.teixe.es" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          class="inline-flex items-center px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-colors rounded-md"
-        >
-          CV
-          <ExternalLink size={12} class="ml-1" />
-        </a>
-      </div>
-    </div>
-  </nav>
-</header>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const menuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuIcon = document.getElementById('menu-icon');
-    const closeIcon = document.getElementById('close-icon');
-
-    if (menuButton && mobileMenu && menuIcon && closeIcon) {
-      menuButton.addEventListener('click', () => {
-        const isOpen = !mobileMenu.classList.contains('hidden');
-        
-        if (isOpen) {
-          mobileMenu.classList.add('hidden');
-          menuIcon.classList.remove('hidden');
-          closeIcon.classList.add('hidden');
-        } else {
-          mobileMenu.classList.remove('hidden');
-          menuIcon.classList.add('hidden');
-          closeIcon.classList.remove('hidden');
-        }
-      });
-
-      // Close menu when clicking on a link
-      const mobileLinks = mobileMenu.querySelectorAll('a');
-      mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenu.classList.add('hidden');
-          menuIcon.classList.remove('hidden');
-          closeIcon.classList.add('hidden');
-        });
-      });
-
-      // Close menu when clicking outside
-      document.addEventListener('click', (event) => {
-        if (!menuButton.contains(event.target as Node) && !mobileMenu.contains(event.target as Node)) {
-          mobileMenu.classList.add('hidden');
-          menuIcon.classList.remove('hidden');
-          closeIcon.classList.add('hidden');
-        }
-      });
-    }
-  });
-</script>
+    <span class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100"
+      >Jorge Teixeira</span
+    >
+  </div>
+  <div class="flex space-x-1 sm:space-x-2 items-center">
+    <a
+      href="https://github.com/jorgeteixe"
+      class="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg cursor-pointer transition-all duration-200"
+    >
+      <Github class="h-4 w-4" />
+    </a>
+    <a
+      href="https://x.com/jorgeteixe_"
+      class="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg cursor-pointer transition-all duration-200"
+    >
+      <Twitter class="h-4 w-4" />
+    </a>
+    <a
+      href="https://www.linkedin.com/in/jorge-teixeira-crespo/"
+      class="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg cursor-pointer transition-all duration-200"
+    >
+      <Linkedin class="h-4 w-4" />
+    </a>
+    <a
+      href="https://cv.teixe.es"
+      title="CV"
+      class="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg cursor-pointer transition-all duration-200"
+    >
+      <FileText class="h-4 w-4" />
+    </a>
+  </div>
+</div>

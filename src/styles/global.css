@@ -1,42 +1,32 @@
-@import "tailwindcss";
-@plugin "@tailwindcss/typography";
+@import 'tailwindcss';
+@import './github-markdown.css';
 
-/* Custom scrollbar for webkit browsers */
-::-webkit-scrollbar {
-  @apply w-2;
+/* Restore list styles within markdown content that Tailwind resets */
+.markdown-body ul {
+  list-style-type: disc;
 }
 
-::-webkit-scrollbar-track {
-  @apply bg-gray-100;
+.markdown-body ol {
+  list-style-type: decimal;
 }
 
-::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 rounded-full;
+.markdown-body ul ul,
+.markdown-body ol ul {
+  list-style-type: circle;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-400;
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
 }
 
-/* Smooth transitions */
-* {
-  transition-property: background-color, border-color, color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
 }
 
-/* Focus styles */
-a:focus-visible,
-button:focus-visible {
-  @apply outline-2 outline-offset-2 outline-blue-500;
-}
-
-/* Selection colors */
-::selection {
-  @apply bg-blue-100 text-blue-900;
-}
-
-/* Background color - very light ochre */
-body {
-  background-color: #fefcf6;
+.markdown-body a {
+  text-decoration: underline;
 }

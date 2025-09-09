@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content'
+
+const notes = await getCollection('notes')
+const sortedNotes = notes.sort(
+  (a, b) => a.data.date.getTime() - b.data.date.getTime()
+)
+---
+
+<ul>
+  {
+    sortedNotes.map(note => (
+      <li>
+        <a href={`/${note.slug}`}>{note.data.title}</a> -
+        <time>
+          {note.data.date.toLocaleDateString('en-GB', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+          })}
+        </time>
+        ({note.data.lang})
+      </li>
+    ))
+  }
+  {sortedNotes.length === 0 && <li>no notes found.</li>}
+</ul>

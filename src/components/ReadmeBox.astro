@@ -1,0 +1,37 @@
+---
+import { Pencil } from 'lucide-astro'
+const filename =
+  Astro.url.pathname === '/' ? 'README' : Astro.url.pathname.replaceAll('/', '')
+---
+
+<div
+  class="p-6 border border-gray-300 dark:border-[#2f363e] rounded-md bg-white dark:bg-[#212830]"
+>
+  <div class="flex justify-between mb-4 text-gray-800 dark:text-gray-300">
+    <div class="flex font-mono text-xs">
+      <a href="/" class="hover:text-blue-700 dark:hover:text-blue-400">
+        jorgeteixe
+      </a>
+      <span class="px-1">/</span>
+      <span>{filename.toUpperCase()}</span>
+      <span class="text-gray-600 dark:text-gray-400">.md</span>
+    </div>
+    <div>
+      <a
+        href="https://github.com/jorgeteixe/jorgeteixe"
+        class="cursor-pointer hover:text-blue-700 dark:hover:text-blue-400"
+      >
+        <Pencil class="h-4" />
+      </a>
+    </div>
+  </div>
+  <slot />
+</div>
+
+<style>
+  @media (max-width: 767px) {
+    .readme-box {
+      padding: 15px;
+    }
+  }
+</style>
