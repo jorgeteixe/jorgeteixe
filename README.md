@@ -7,7 +7,7 @@ i care about software freedom, community, and building things people enjoy.
 ## 📝 notes
 
 <ul> <li> <a href="https://teixe.es/late-night-vibecoding">Vibecoding a solution to a real world problem</a> -
-<time> 9 Sept 2024 </time>
+<time> 9 Sept 2025 </time>
 (en)
 </li>  </ul>
 
