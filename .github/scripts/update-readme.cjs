@@ -60,6 +60,12 @@ try {
   // Clean up extra newlines
   cleanContent = cleanContent.replace(/\n\n+/g, '\n\n').trim()
 
+  // Fix relative links to absolute links
+  cleanContent = cleanContent.replace(
+    /href="\/([^"]+)"/g,
+    'href="https://teixe.es/$1"'
+  )
+
   // Add newline at the end
   cleanContent += '\n'
 
