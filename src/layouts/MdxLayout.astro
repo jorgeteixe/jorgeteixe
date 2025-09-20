@@ -14,7 +14,7 @@ const { frontmatter } = Astro.props
 <PageLayout
   title={frontmatter.title}
   description={frontmatter.description}
-  image={frontmatter.image || '/meta.png'}
+  image={frontmatter.image}
 >
   <slot />
 </PageLayout>

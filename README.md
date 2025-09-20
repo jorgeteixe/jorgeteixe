@@ -6,7 +6,10 @@ i care about software freedom, community, and building things people enjoy.
 
 ## 📝 notes
 
-<ul>  <li>no notes found.</li> </ul>
+<ul> <li> <a href="/late-night-vibecoding">Vibecoding a solution to a real world problem</a> -
+<time> 9 Sept 2024 </time>
+(en)
+</li>  </ul>
 
 ## 📍 where i'm at
 

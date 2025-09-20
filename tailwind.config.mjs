@@ -8,12 +8,5 @@ export default {
   plugins: [require('@tailwindcss/typography')],
   corePlugins: {
     preflight: true
-  },
-  // Prevent Tailwind base styles from affecting markdown content
-  safelist: [
-    {
-      pattern: /^markdown-body/,
-      variants: ['responsive', 'hover', 'focus']
-    }
-  ]
+  }
 }

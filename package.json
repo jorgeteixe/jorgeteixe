@@ -15,6 +15,7 @@
     "@tailwindcss/vite": "^4.1.13",
     "astro": "^5.13.6",
     "lucide-astro": "^0.543.0",
+    "sharp": "^0.34.4",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9.2"
   },

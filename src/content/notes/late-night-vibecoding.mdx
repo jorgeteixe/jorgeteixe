@@ -1,0 +1,71 @@
+---
+title: Vibecoding a solution to a real world problem
+description: How I hacked together an AI-powered tool in one night to save a construction company owner from hours of manual PDF parsing and budget formatting.
+date: 2024-09-09
+lang: en
+---
+
+import exampleCopy from '../../assets/late-night-vibecoding/example-copy.png'
+import newAppDoc from '../../assets/late-night-vibecoding/new-app-doc.png'
+import newAppIndex from '../../assets/late-night-vibecoding/new-app-index.png'
+import oldAppImage from '../../assets/late-night-vibecoding/old-app.png'
+import ImageWithCaption from '../../components/ImageWithCaption.astro'
+
+# Vibecoding a solution to a real world problem
+
+A couple weeks ago I got a call from my friend's dad. He runs a small construction company, and every once in a while I'm the one he calls when his computer or software gets in the way. This time he had a new laptop and needed help setting it up.
+
+Fast forward. I’m at his place setting up a new laptop and he asks me: _“Can you put that budget tool on the desktop again?”_
+
+That instantly took me back to how the whole thing started. Years ago, I had watched him work on a budget proposal and his process was… rough. Architects would send him these massive PDFs with pages of materials and quantities. To prepare his proposal he had to copy every single line into his invoicing software.
+
+Two problems:
+
+- the software only allowed 256 characters per line
+- text copied from PDFs came out broken and messy
+
+So he had to manually split every long description, clean it up, and then add the price and quantity at the end.
+
+<ImageWithCaption src={exampleCopy} caption="Example architect description." />
+
+He only did a few per month, but each one could take 3-5 hours. Watching him made me think “there has to be a quicker way.”
+
+So I built [text-to-cells](https://github.com/jorgeteixe/text-to-cells), a tiny app where he could paste a long description and get it automatically split into 256-character chunks, nicely formatted and ready to paste.
+
+<ImageWithCaption src={oldAppImage} caption="The first version of the app." />
+
+It wasn’t perfect (sometimes weird symbols crashed it). Five years later, still part of his workflow.
+
+This day I went back home thinking: this had to be better. I’m a lot more comfortable coding now than when I first built it as a student, and if he still relies on the app after all these years… then it’s worth improving.
+
+Then, I started thinking: what if I could make it even better? What if he could just upload the whole PDF and get back a ready-to-paste budget?
+
+A couple hours later I had a new version:
+
+- upload the PDF
+- parse it with **PDF.js**
+- send it to the **Gemini API**
+- get back clean JSON with descriptions already split
+- store everything in **IndexedDB**
+
+<ImageWithCaption
+  src={newAppDoc}
+  caption="New version: whole document at once."
+/>
+
+The new interface made the workflow much clearer and faster. Instead of fighting PDFs line by line, the whole document was parsed and structured right away.
+
+<ImageWithCaption src={newAppIndex} caption="Index view of parsed budgets." />
+
+You can check it out yourself here:
+
+- Source code: [jorgeteixe/budget-cells](https://github.com/jorgeteixe/budget-cells)
+- Demo: [budget-cells.vercel.app](http://budget-cells.vercel.app)
+
+---
+
+## The test
+
+Next morning I showed up at his place for a coffee. He was literally working on a budget, perfect timing. We dropped in a Gemini API key, ran the PDF, and it just worked.
+
+No copy-paste hell, no broken formatting, everything ready in seconds. We said "wow, I owe you a big lunch".
