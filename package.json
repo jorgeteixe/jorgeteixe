@@ -10,10 +10,10 @@
     "update-readme": "node .github/scripts/update-readme.cjs"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.5",
-    "@astrojs/sitemap": "^3.5.1",
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/sitemap": "^3.6.0",
     "@tailwindcss/vite": "^4.1.13",
-    "astro": "^5.13.6",
+    "astro": "^5.16.6",
     "lucide-astro": "^0.543.0",
     "sharp": "^0.34.4",
     "tailwindcss": "^4.1.13",
