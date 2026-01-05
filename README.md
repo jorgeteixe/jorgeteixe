@@ -1,8 +1,8 @@
 # 👋 hey, i'm jorge
 
-software engineer from spain. i work on open source stuff [here](https://github.com/InditexTech) and organize tech events at [gpul](https://gpul.org).
+i'm a computer engineer from spain. i sometimes organize tech events at [gpul](https://github.com/gpul-org).
 
-i care about software freedom, community, and building things people enjoy.
+i care about community and building things people enjoy.
 
 ## 📝 notes
 
@@ -13,7 +13,7 @@ i care about software freedom, community, and building things people enjoy.
 
 ## 📍 where i'm at
 
-- 🌍 redondela, galicia
+- 🌍 [redondela, galicia](https://maps.app.goo.gl/EjmNqEZAyF45ge118)
 - ✈️ often traveling — for fun, for conferences, or both.
 
 > my opinions are provided as is, with no warranty.
